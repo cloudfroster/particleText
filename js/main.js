@@ -20,7 +20,7 @@
   main();
   function main() {
 
-    setWidthHeight(); // 设置宽高
+    setWidthHeight(); // setWidthHeight
 
     var particles = [];
     //ctx.globalAlpha = 1;
@@ -40,25 +40,25 @@
     }
     run();
 
-    // 新建粒子
+    // createParticles
     function createParticles() {
       if(WIDTH < 480) {
         ctx.font = "30px '微软雅黑'";
       }else {
         ctx.font = "80px '微软雅黑'";
       }
-      // 创建渐变
+      // createLinearGradient
       var gradient = ctx.createLinearGradient(0, 0, WIDTH, 0);
       gradient.addColorStop("0", "white");
       gradient.addColorStop("0.2", "gold");
       gradient.addColorStop("0.5", "pink");
       gradient.addColorStop("0.7", "white");
       gradient.addColorStop("1.0", "red");
-      // 用渐变填色
+      // lineGradient
       ctx.strokeStyle = gradient;
       var textWidth = ctx.measureText(TEXT).width;
       ctx.strokeText(TEXT, WIDTH/2 - textWidth/2, HEIGHT/2);
-      // 从canvas中抽象出粒子
+      // get particle from canvas
       var imgData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
       for (var i = 0, len = imgData.data.length; i < len; i = i + 4) {
         var r = imgData.data[i];
@@ -81,18 +81,18 @@
 
 
 
-  // 设置canvas为全屏
+  // set canvas to full screen
   function setWidthHeight() {
     WIDTH = canvas.width = parseInt(window.getComputedStyle(document.querySelector('body')).width);
     HEIGHT = canvas.height = parseInt(window.getComputedStyle(document.querySelector('body')).height);
   }
-  // 鼠标移动
+  // mouse move event
   function mouseMove(event) {
     event = event || window.event;
     mouseX = event.pageX;
     mouseY = event.pageY;
   }
-  // 触摸屏
+  // touch move event
   function touchMove(event) {
     event = event || window.event;
     var touch = event.touches[0];
