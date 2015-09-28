@@ -4,7 +4,8 @@
   var updateText = document.querySelector('#updateText');
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
-  var TEXT = 'HELLO WORLD';
+  //var TEXT = 'HELLO WORLD';
+  var TEXT = 'Happy National Day';
   var WIDTH, HEIGHT;
   var mouseX = 1000,
     mouseY = 1000;
