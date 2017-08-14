@@ -5,7 +5,7 @@
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
   //var TEXT = 'HELLO WORLD';
-  var TEXT = 'Happy National Day';
+  var TEXT = getQueryParams().text || 'Happy National Day';
   var WIDTH, HEIGHT;
   var mouseX = 1000,
     mouseY = 1000;
@@ -16,6 +16,19 @@
   updateButton.onclick = function(){
     TEXT = updateText.value || TEXT;
     main();
+  }
+
+  function getQueryParams() {
+    var result = {}
+    var searchString = location.search.split('?')[1];
+    if (searchString) {
+      var searchArr = searchString.split('&');
+      searchArr.forEach(function (str) {
+        strArr = str.split('=');
+        result[strArr[0]] = decodeURI(strArr[1])
+      })
+    }
+    return result
   }
 
   main();
